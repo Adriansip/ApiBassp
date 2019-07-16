@@ -36,10 +36,11 @@ class TestFlowController
     public function store(TestFlow $test)
     {
         $query='INSERT INTO '.$this->tbl.' (testFlowName, testFlowType, testFlowStatus, asignedTo,
-         browserId, testCycle)
+         browserId, testCycle, testFlowExecDate, userId)
         VALUES ("'.$test->testFlowName.'",'.$test->testFlowType.','.$test->testFlowStatus.',
-        '.$test->asignedTo.','.$test->browserId.','.$test->testCycle.')';
+        '.$test->asignedTo.','.$test->browserId.','.$test->testCycle.',"'.Date('Y-m-d H:i:s').'",'.$test->userId.')';
         $stm=$this->conn->query($query);
+
 
         return $stm;
     }
@@ -52,7 +53,8 @@ class TestFlowController
           testFlowStatus = '.$test->testFlowStatus.',
           asignedTo = '.$test->asignedTo.',
           browserId = '.$test->browserId.',
-          testCycle = '.$test->testCycle.'
+          testCycle = '.$test->testCycle.',
+          testFlowExecDate="'.Date('Y-m-d H:i:s').'"
           where testFlowId = '.$id;
         $stm=$this->conn->query($query);
         return $stm;

@@ -33,6 +33,7 @@ foreach ($data  as $val) {
  $test->browserId=$data['browserId'];
  $test->testFlowType=$data['testFlowType'];
  $test->testCycle=$data['testCycle'];
+ $test->userId=$data['userId'];
 
  //Almacenar registro
  $stm=$testFlowController->store($test);
